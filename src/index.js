@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const userRouter = require("../src/routes/userRoutes");
+const recipeRouter = require("../src/routes/recipeRoutes");
 require("dotenv").config();
 const port = process.env.PORT || 5001;
 app.use(express.json());
@@ -18,6 +19,7 @@ const mongoDBConnection = async () => {
   }
 };
 app.use("/auth", userRouter);
+app.use("/recipe", recipeRouter);
 
 app.get("/", (req, res) => {
   res.send("hello from simple server :)");
