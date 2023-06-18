@@ -35,7 +35,7 @@ exports.saveRecipes = async (req, res, next) => {
 };
 exports.getUserRecipe = async (req, res, next) => {
   try {
-    const user = await User.findById(req.body.userID);
+    const user = await User.findById(req.params.userID);
     res.status(200).json({ savedRecipes: user.savedRecipes });
   } catch (error) {
     res.status(400).json({ error: "Something wrong happen", error });
@@ -43,7 +43,7 @@ exports.getUserRecipe = async (req, res, next) => {
 };
 exports.getAllRecipeCreatedByUser = async (req, res, next) => {
   try {
-    const user = await User.findById(req.body.userID);
+    const user = await User.findById(req.params.userID);
     const savedRecipes = await Recipe.find({
       _id: { $in: user.savedRecipes },
     });
