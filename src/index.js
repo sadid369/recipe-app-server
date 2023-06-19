@@ -22,6 +22,7 @@ app.use("/auth", userRouter);
 app.use("/recipe", recipeRouter);
 
 app.get("/", (req, res) => {
+  res.setHeader("Access-Control-Allow-Credentials", "true");
   res.send("hello from simple server :)");
 });
 
